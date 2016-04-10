@@ -1,14 +1,9 @@
-# line-nullpo
+LINE BOTを自分の環境で動かしたかっただけのリポジトリです。
+コードは https://github.com/qckanemoto/line-nullpo をコピーしただけです。
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+---
 
-LINE BOT API Trialでとりあえず「ぬるぽ」に「ｶﾞｯ」するだけのbotを作ってみました。
+LINE BOT QRコード
 
-以下のQRコードから友だちになれます。
+![image](https://raw.githubusercontent.com/kaznishi/hello-linebot-php-heroku/master/kaznishi-linebot.png)
 
-![image](https://cloud.githubusercontent.com/assets/4360663/14373615/d877693a-fd86-11e5-90ff-a03393b4a2d0.png)
-
-## 免責
-
-* 月に500回しか「ｶﾞｯ」できないので、反応しなくなったら察してください
-* そもそも飽きたら消すかもしれませんｗ
