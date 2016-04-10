@@ -11,6 +11,7 @@ $app->register(new Silex\Provider\MonologServiceProvider(), array(
 ));
 
 $app->post('/callback', function (Request $request) use ($app) {
+    $app['monolog']->addDebug('callback access.');
     $client = new GuzzleHttp\Client();
 
     $body = json_decode($request->getContent(), true);
