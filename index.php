@@ -1,16 +1,22 @@
 <?php
-require_once '../vendor/autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';
+
 use Symfony\Component\HttpFoundation\Request;
+
 $app = new Silex\Application();
+
 $app->post('/callback', function (Request $request) use ($app) {
     $client = new GuzzleHttp\Client();
+
     $body = json_decode($request->getContent(), true);
     foreach ($body['result'] as $msg) {
         if (!preg_match('/(ぬるぽ|ヌルポ|ﾇﾙﾎﾟ|nullpo)/i', $msg['content']['text'])) {
             continue;
         }
+
         $resContent = $msg['content'];
         $resContent['text'] = 'ｶﾞｯ';
+
         $requestOptions = [
             'body' => json_encode([
                 'to' => [$msg['content']['from']],
@@ -28,13 +34,15 @@ $app->post('/callback', function (Request $request) use ($app) {
                 'https' => getenv('FIXIE_URL'),
             ],
         ];
+
         try {
             $client->request('post', 'https://trialbot-api.line.me/v1/events', $requestOptions);
         } catch (Exception $e) {
             error_log($e->getMessage());
         }
     }
+
     return 'OK';
 });
-$app->run();
 
+$app->run();

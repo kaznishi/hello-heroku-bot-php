@@ -1,23 +1,14 @@
-# php-getting-started
+# line-nullpo
 
-A barebones PHP app that makes use of the [Silex](http://silex.sensiolabs.org/) web framework, which can easily be deployed to Heroku.
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-This application supports the [Getting Started with PHP on Heroku](https://devcenter.heroku.com/articles/getting-started-with-php) article - check it out.
+LINE BOT API Trialでとりあえず「ぬるぽ」に「ｶﾞｯ」するだけのbotを作ってみました。
 
-## Deploying
+以下のQRコードから友だちになれます。
 
-Install the [Heroku Toolbelt](https://toolbelt.heroku.com/).
+![image](https://cloud.githubusercontent.com/assets/4360663/14373615/d877693a-fd86-11e5-90ff-a03393b4a2d0.png)
 
-```sh
-$ git clone git@github.com:heroku/php-getting-started.git # or clone your own fork
-$ cd php-getting-started
-$ heroku create
-$ git push heroku master
-$ heroku open
-```
+## 免責
 
-## Documentation
-
-For more information about using PHP on Heroku, see these Dev Center articles:
-
-- [PHP on Heroku](https://devcenter.heroku.com/categories/php)
+* 月に500回しか「ｶﾞｯ」できないので、反応しなくなったら察してください
+* そもそも飽きたら消すかもしれませんｗ
