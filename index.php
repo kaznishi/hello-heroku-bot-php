@@ -4,9 +4,13 @@ require_once __DIR__ . '/vendor/autoload.php';
 use Symfony\Component\HttpFoundation\Request;
 
 $app = new Silex\Application();
+$app['debug'] = true;
+
+$app->register(new Silex\Provider\MonologServiceProvider(), array(
+    'monolog.logfile' => 'php://stderr',
+));
 
 $app->post('/callback', function (Request $request) use ($app) {
-    echo "hogehoge\n";
     $client = new GuzzleHttp\Client();
 
     $body = json_decode($request->getContent(), true);
@@ -44,6 +48,11 @@ $app->post('/callback', function (Request $request) use ($app) {
     }
 
     return 'OK';
+});
+
+$app->get('/', function() use($app) {
+    $app['monolog']->addDebug('logging output.');
+    return "Hello,hogehoge";
 });
 
 $app->run();
