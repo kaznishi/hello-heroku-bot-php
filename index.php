@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/response.php';
+require_once __DIR__ . '/restaurant.php';
 
 use Symfony\Component\HttpFoundation\Request;
 use ResponseGenerator;
