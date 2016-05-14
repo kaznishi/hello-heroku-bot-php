@@ -1,12 +1,15 @@
 <?php
 use Symfony\Component\HttpFoundation\Request;
+use Restaurant;
+use SelectRestaurant;
 
 class ResponseGenerator
 {
     public function response($msg) {
         $client = new GuzzleHttp\Client();
         $resContent = $msg['content'];
-        $resContent['text'] = "ここのお店とかどう？\n http://example.com";
+        $restaurant = (new SelectRestaurant())->gurunavi();
+        $resContent['text'] = "ここのお店とかどう？\n".$restaurant->getName()."\n".$restaurant->getUrl();
         $requestOptions = [
             'body' => json_encode([
                 'to' => [$msg['content']['from']],
