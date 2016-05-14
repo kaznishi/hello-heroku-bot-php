@@ -18,7 +18,7 @@ $app->post('/callback', function (Request $request) use ($app) {
 
     $body = json_decode($request->getContent(), true);
     foreach ($body['result'] as $msg) {
-        if (!preg_match('/(ぬるぽ|ヌルポ|ﾇﾙﾎﾟ|nullpo)/i', $msg['content']['text'])) {
+        if (!preg_match('/(はらへった|おなかすいた|お腹空いた|はらへ)/i', $msg['content']['text'])) {
             continue;
         }
 
