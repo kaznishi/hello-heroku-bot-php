@@ -6,7 +6,7 @@ class ResponseGenerator
     public function response($msg) {
         $client = new GuzzleHttp\Client();
         $resContent = $msg['content'];
-        $resContent['text'] = 'ここのお店とかどう？ http://example.com';
+        $resContent['text'] = "ここのお店とかどう？\n http://example.com";
         $requestOptions = [
             'body' => json_encode([
                 'to' => [$msg['content']['from']],
