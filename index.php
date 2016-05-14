@@ -1,7 +1,9 @@
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . 'response.php';
 
 use Symfony\Component\HttpFoundation\Request;
+use ResponseGenerator;
 
 $app = new Silex\Application();
 $app['debug'] = true;
@@ -20,32 +22,9 @@ $app->post('/callback', function (Request $request) use ($app) {
             continue;
         }
 
-        $resContent = $msg['content'];
-        $resContent['text'] = 'ｶﾞｯ';
+        $responseGenerator = new ResponseGenerator();
+        $responseGenerator->response($msg);
 
-        $requestOptions = [
-            'body' => json_encode([
-                'to' => [$msg['content']['from']],
-                'toChannel' => 1383378250, # Fixed value
-                'eventType' => '138311608800106203', # Fixed value
-                'content' => $resContent,
-            ]),
-            'headers' => [
-                'Content-Type' => 'application/json; charset=UTF-8',
-                'X-Line-ChannelID' => getenv('LINE_CHANNEL_ID'),
-                'X-Line-ChannelSecret' => getenv('LINE_CHANNEL_SECRET'),
-                'X-Line-Trusted-User-With-ACL' => getenv('LINE_CHANNEL_MID'),
-            ],
-            'proxy' => [
-                'https' => getenv('FIXIE_URL'),
-            ],
-        ];
-
-        try {
-            $client->request('post', 'https://trialbot-api.line.me/v1/events', $requestOptions);
-        } catch (Exception $e) {
-            error_log($e->getMessage());
-        }
     }
 
     return 'OK';
@@ -57,3 +36,4 @@ $app->get('/', function() use($app) {
 });
 
 $app->run();
+
